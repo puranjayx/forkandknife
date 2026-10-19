@@ -1,0 +1,349 @@
+/* ==========================================================================
+   Components - Fork & Knife
+   Buttons, Cards, Preloader, Marquee, Badges, Custom Cursor
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.85rem 1.85rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-base), opacity var(--transition-base), background-color var(--transition-base), box-shadow var(--transition-base);
+  min-height: 48px; /* Touch target >= 44px */
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.btn-primary {
+  background-color: var(--color-accent-orange);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(217, 130, 15, 0.35);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(217, 130, 15, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-card-border);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-accent-orange);
+  color: var(--color-accent-orange);
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-link {
+  padding: 0;
+  min-height: auto;
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.btn-link svg {
+  transition: transform var(--transition-base);
+}
+
+.btn-link:hover {
+  color: var(--color-accent-orange);
+}
+
+.btn-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   2. Cards (Charcoal Cards from Reference PDF)
+   -------------------------------------------------------------------------- */
+.card-charcoal {
+  background: var(--color-card-bg);
+  background: linear-gradient(145deg, #323232 0%, #252525 100%);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  position: relative;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+  will-change: transform;
+}
+
+.card-charcoal:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-card-border-hover);
+}
+
+/* --------------------------------------------------------------------------
+   3. Floating Ingredients Layer
+   -------------------------------------------------------------------------- */
+.floating-ingredient {
+  position: absolute;
+  pointer-events: none;
+  z-index: var(--z-decor);
+  user-select: none;
+  will-change: transform;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+}
+
+/* --------------------------------------------------------------------------
+   4. Kinetic Marquee Strip
+   -------------------------------------------------------------------------- */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #140f0c;
+  border-block: 1px solid rgba(217, 130, 15, 0.15);
+  padding-block: var(--space-3);
+  position: relative;
+  z-index: 10;
+}
+
+.marquee-track {
+  display: inline-flex;
+  gap: var(--space-6);
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.marquee-item .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent-orange);
+}
+
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Custom Cursor (Desktop Only)
+   -------------------------------------------------------------------------- */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-accent-orange);
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  opacity: 0.95;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease;
+  will-change: transform;
+}
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(217, 130, 15, 0.6);
+  pointer-events: none;
+  z-index: calc(var(--z-cursor) - 1);
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out, width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+  will-change: transform;
+}
+
+body.cursor-hover .custom-cursor {
+  width: 18px;
+  height: 18px;
+  background-color: var(--color-accent-gold);
+}
+
+body.cursor-hover .custom-cursor-follower {
+  width: 54px;
+  height: 54px;
+  border-color: rgba(245, 158, 11, 0.8);
+  background-color: rgba(217, 130, 15, 0.1);
+}
+
+/* Hide custom cursor on touch screens */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor,
+  .custom-cursor-follower {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Preloader / Curtain Reveal
+   -------------------------------------------------------------------------- */
+.preloader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #070402;
+  z-index: var(--z-preloader);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  will-change: transform;
+  overflow: hidden;
+}
+
+.preloader-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(217, 130, 15, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.preloader-emblem {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(217, 130, 15, 0.2);
+  border-top-color: var(--color-accent-orange);
+  border-radius: 50%;
+  animation: preloader-spin 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+@keyframes preloader-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.preloader-svg {
+  width: 44px;
+  height: 44px;
+  color: var(--color-accent-orange);
+}
+
+.preloader-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  letter-spacing: 0.2em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.preloader-subtitle {
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  color: var(--color-accent-orange);
+  text-transform: uppercase;
+  margin-top: calc(-1 * var(--space-4));
+}
+
+.preloader-progress-wrap {
+  width: 240px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-accent-orange), var(--color-accent-gold));
+  border-radius: var(--radius-full);
+  transition: width 0.15s ease-out;
+}
+
+.preloader-percent {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.1em;
+}
+
+/* --------------------------------------------------------------------------
+   7. Rating Badge & Counter
+   -------------------------------------------------------------------------- */
+.rating-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.4rem 0.9rem;
+  background: rgba(43, 43, 43, 0.85);
+  border: 1px solid rgba(217, 130, 15, 0.35);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  color: var(--color-text-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.rating-stars {
+  display: inline-flex;
+  color: var(--color-accent-gold);
+  gap: 2px;
+}
+
+.rating-stars svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}

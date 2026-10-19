@@ -1,0 +1,1057 @@
+/* ==========================================================================
+   Sections - Fork & Knife
+   Exact recreation of the 7-page PDF structure & design layout
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Navbar
+   -------------------------------------------------------------------------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: var(--z-sticky);
+  transition: transform var(--transition-base), background-color var(--transition-base), backdrop-filter var(--transition-base);
+  will-change: transform;
+}
+
+.header.is-scrolled {
+  background-color: rgba(10, 7, 5, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header.is-hidden {
+  transform: translateY(-100%);
+}
+
+.nav-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.brand-emblem {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, #3a2e24 0%, #1a1410 100%);
+  border: 1px solid rgba(217, 130, 15, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-orange);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.brand-sub {
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent-orange);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+@media (min-width: 900px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+.nav-link {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.05em;
+  position: relative;
+  transition: color var(--transition-fast);
+  padding-block: var(--space-1);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-accent-orange);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition-base);
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+  color: #ffffff;
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-card-border);
+  color: var(--color-text-primary);
+}
+
+@media (min-width: 900px) {
+  .mobile-toggle {
+    display: none;
+  }
+}
+
+/* Mobile Navigation Drawer */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 7, 5, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: calc(var(--z-sticky) - 1);
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--header-height) + var(--space-8)) var(--space-6) var(--space-8);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform var(--transition-smooth), opacity var(--transition-smooth);
+  pointer-events: none;
+}
+
+.mobile-nav.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.mobile-nav-link {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.1em;
+  padding-block: var(--space-2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-nav-link:hover {
+  color: var(--color-accent-orange);
+}
+
+/* --------------------------------------------------------------------------
+   2. Hero Section (Orbit Arc + Big Plate)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: calc(var(--header-height) + var(--space-4));
+  padding-bottom: var(--space-8);
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 65%, rgba(217, 130, 15, 0.12) 0%, transparent 60%);
+}
+
+.hero-header {
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin-inline: auto;
+  margin-top: var(--space-4);
+}
+
+.hero-main-title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(217, 130, 15, 0.25);
+  margin-bottom: var(--space-2);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hero-sub-title {
+  font-size: var(--text-base);
+  color: var(--color-accent-orange);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* Hero Orbit Stage */
+.hero-orbit-stage {
+  position: relative;
+  width: 100%;
+  max-width: 920px;
+  height: 400px;
+  margin-inline: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
+.hero-orbit-arc-svg {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 860px;
+  height: 380px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.orbit-arc-path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+}
+
+.orbit-items-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.orbit-dish-name {
+  position: absolute;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  pointer-events: auto;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(18, 14, 11, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.orbit-dish-name:hover,
+.orbit-dish-name.is-active {
+  color: var(--color-accent-orange);
+  border-color: var(--color-accent-orange);
+  transform: scale(1.08);
+}
+
+/* Big Hero Plate */
+.hero-plate-container {
+  position: relative;
+  width: clamp(260px, 36vw, 420px);
+  height: clamp(260px, 36vw, 420px);
+  z-index: 4;
+  margin-bottom: 0px;
+}
+
+.hero-plate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(217, 130, 15, 0.2));
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  will-change: transform, opacity;
+}
+
+/* Hero Pagination (01-04 Capsule) */
+.hero-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  position: relative;
+  z-index: 10;
+}
+
+.pagination-pill {
+  width: 44px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: rgba(43, 43, 43, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-base);
+}
+
+.pagination-pill:hover,
+.pagination-pill.is-active {
+  background-color: var(--color-accent-orange);
+  border-color: var(--color-accent-orange);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(217, 130, 15, 0.4);
+  transform: scale(1.05);
+}
+
+/* --------------------------------------------------------------------------
+   3. About Section ("Experience Authentic Flavors")
+   -------------------------------------------------------------------------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.about-categories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 600px) {
+  .about-categories {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-category-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: rgba(43, 43, 43, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-base);
+}
+
+.about-category-item:hover {
+  border-color: rgba(217, 130, 15, 0.3);
+}
+
+.category-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(217, 130, 15, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-orange);
+  flex-shrink: 0;
+}
+
+.category-info h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.category-info p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.about-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-dish-img {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  border-radius: var(--radius-full);
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.9));
+  transform: rotate(-5deg);
+  transition: transform var(--transition-slow);
+}
+
+.about-visual:hover .about-dish-img {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* --------------------------------------------------------------------------
+   4. Popular Dishes Gallery (4 Cards)
+   -------------------------------------------------------------------------- */
+.dishes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+@media (min-width: 600px) {
+  .dishes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dishes-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dish-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--space-8);
+  padding-inline: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+.dish-thumbnail-wrap {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #1e1b18;
+  border: 2px solid rgba(217, 130, 15, 0.35);
+  margin-top: calc(-1 * var(--space-12));
+  margin-bottom: var(--space-4);
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.dish-card:hover .dish-thumbnail-wrap {
+  transform: scale(1.08) rotate(4deg);
+  border-color: var(--color-accent-orange);
+}
+
+.dish-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dish-badge {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-orange);
+  background-color: rgba(217, 130, 15, 0.12);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-2);
+}
+
+.dish-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+
+.dish-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+  flex-grow: 1;
+}
+
+.dishes-cta-wrap {
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   5. Feature Spotlight Section (Hero Dish with Callout Lines)
+   -------------------------------------------------------------------------- */
+.spotlight-section {
+  position: relative;
+  background: radial-gradient(circle at center, rgba(217, 130, 15, 0.08) 0%, transparent 65%);
+}
+
+.spotlight-wrapper {
+  position: relative;
+  max-width: 1020px;
+  margin-inline: auto;
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-8);
+}
+
+.spotlight-center-dish {
+  width: clamp(260px, 40vw, 420px);
+  height: clamp(260px, 40vw, 420px);
+  position: relative;
+  z-index: 5;
+}
+
+.spotlight-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+}
+
+.spotlight-callouts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.callout-item {
+  position: absolute;
+  pointer-events: auto;
+  max-width: 200px;
+  transition: transform var(--transition-base);
+}
+
+.callout-item:hover {
+  transform: translateY(-3px);
+}
+
+.callout-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.callout-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.3;
+}
+
+/* Desktop absolute positioning for 6 callouts matching Page 4 */
+@media (min-width: 900px) {
+  .callout-top-left { top: 12%; left: 4%; text-align: right; }
+  .callout-mid-left { top: 48%; left: 2%; text-align: right; }
+  .callout-bot-left { bottom: 12%; left: 4%; text-align: right; }
+
+  .callout-top-right { top: 12%; right: 4%; text-align: left; }
+  .callout-mid-right { top: 48%; right: 2%; text-align: left; }
+  .callout-bot-right { bottom: 12%; right: 4%; text-align: left; }
+}
+
+@media (max-width: 899px) {
+  .spotlight-callouts {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+  .callout-item {
+    position: static;
+    max-width: none;
+    text-align: left !important;
+    background: rgba(43, 43, 43, 0.5);
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Host Your Special Day / Catering Banner
+   -------------------------------------------------------------------------- */
+.events-section {
+  background: #0d0a08;
+  position: relative;
+  overflow: hidden;
+  border-block: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.events-wood-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image: repeating-linear-gradient(90deg, #000 0px, #000 30px, #1a1612 31px, #1a1612 60px);
+  pointer-events: none;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 992px) {
+  .events-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.events-cards-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-block: var(--space-6);
+}
+
+@media (min-width: 600px) {
+  .events-cards-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.event-subcard {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+  background: rgba(43, 43, 43, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.event-subcard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217, 130, 15, 0.4);
+}
+
+.event-card-img-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: var(--space-3);
+  border: 1px solid rgba(217, 130, 15, 0.4);
+}
+
+.event-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-skewers-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skewers-img {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95));
+}
+
+/* --------------------------------------------------------------------------
+   7. Fresh Flavors Every Day (Tri-column with Center Pan)
+   -------------------------------------------------------------------------- */
+.fresh-flavors-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+  margin-top: var(--space-8);
+}
+
+@media (min-width: 992px) {
+  .fresh-flavors-grid {
+    grid-template-columns: 1fr 1.2fr 1fr;
+  }
+}
+
+.flavor-badges-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.flavor-badge-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: rgba(43, 43, 43, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-base);
+}
+
+.flavor-badge-card:hover {
+  transform: translateX(4px);
+}
+
+.flavor-center-pan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.pan-img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+  transform: rotate(-10deg);
+  transition: transform var(--transition-slow);
+}
+
+.flavor-center-pan:hover .pan-img {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.flavor-categories-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.flavor-cat-item h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-1);
+}
+
+.flavor-cat-item p {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   8. Reviews Carousel (Real Verified Google Reviews)
+   -------------------------------------------------------------------------- */
+.reviews-section {
+  position: relative;
+  background: linear-gradient(180deg, var(--color-bg-primary) 0%, #110d0a 100%);
+}
+
+.reviews-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-4);
+}
+
+.reviews-carousel-track {
+  display: flex;
+  gap: var(--space-6);
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.reviews-carousel-track:active {
+  cursor: grabbing;
+}
+
+.review-card {
+  flex: 0 0 clamp(280px, 80vw, 380px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-quote {
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  font-style: italic;
+  margin-bottom: var(--space-6);
+  line-height: 1.6;
+}
+
+.reviewer-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: var(--space-4);
+}
+
+.reviewer-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent-orange), #ff9800);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+
+.reviewer-name {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: #ffffff;
+}
+
+.reviewer-src {
+  font-size: 0.75rem;
+  color: var(--color-accent-orange);
+}
+
+/* --------------------------------------------------------------------------
+   9. Booking Form + Image Panel + Location/Hours
+   -------------------------------------------------------------------------- */
+.booking-section {
+  position: relative;
+}
+
+.booking-panel-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: #1e1b18;
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 992px) {
+  .booking-panel-container {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.booking-form-wrap {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .booking-form-wrap {
+    padding: var(--space-12);
+  }
+}
+
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-size: var(--text-sm);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--color-input-focus);
+  box-shadow: 0 0 12px rgba(217, 130, 15, 0.3);
+  outline: none;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.booking-image-panel {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.booking-side-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.booking-panel-container:hover .booking-side-img {
+  transform: scale(1.04);
+}
+
+/* Location and Contact Strip below Booking */
+.location-strip {
+  margin-top: var(--space-12);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .location-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.location-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: rgba(43, 43, 43, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+}
+
+.location-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(217, 130, 15, 0.15);
+  color: var(--color-accent-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   10. Footer
+   -------------------------------------------------------------------------- */
+.footer {
+  background-color: #060403;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-8);
+  position: relative;
+  z-index: 10;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+}
+
+.footer-brand p {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  max-width: 340px;
+}
+
+.footer-col h4 {
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-4);
+  color: #ffffff;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer-link {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--color-accent-orange);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+  }
+}

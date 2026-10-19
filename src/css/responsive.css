@@ -1,0 +1,102 @@
+/* ==========================================================================
+   Responsive Adaptations & Mobile Polish - Fork & Knife
+   Tested across 360px, 390px, 768px, 1024px, 1440px
+   ========================================================================== */
+
+/* Hero Adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + var(--space-6));
+    padding-bottom: var(--space-12);
+  }
+
+  .hero-main-title {
+    font-size: clamp(1.85rem, 7vw, 2.75rem);
+    letter-spacing: 0.08em;
+  }
+
+  .hero-orbit-stage {
+    height: auto;
+    min-height: 320px;
+    margin-top: var(--space-6);
+  }
+
+  .hero-orbit-arc-svg {
+    display: none; /* Hide complex arc on small mobile */
+  }
+
+  .orbit-items-wrap {
+    display: none; /* Mobile switches to swipeable plate + pagination */
+  }
+
+  .hero-plate-container {
+    width: clamp(220px, 64vw, 300px);
+    height: clamp(220px, 64vw, 300px);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-pagination {
+    margin-top: var(--space-4);
+  }
+
+  .pagination-pill {
+    width: 48px;
+    height: 38px;
+    font-size: var(--text-sm);
+  }
+}
+
+/* Spotlight Leader Lines */
+.spotlight-lines-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+@media (max-width: 899px) {
+  .spotlight-lines-svg {
+    display: none;
+  }
+}
+
+/* Touch Targets & Form Inputs on Mobile */
+@media (max-width: 600px) {
+  .form-input,
+  .form-textarea,
+  .btn {
+    font-size: 1rem; /* Prevents iOS auto-zoom on input focus */
+  }
+
+  .section {
+    padding-block: var(--space-12);
+  }
+
+  .dish-thumbnail-wrap {
+    width: 100px;
+    height: 100px;
+    margin-top: calc(-1 * var(--space-8));
+  }
+
+  .booking-panel-container {
+    border-radius: var(--radius-lg);
+  }
+
+  .booking-form-wrap {
+    padding: var(--space-6);
+  }
+}
+
+/* Safe Area Insets for Modern Notched Phones (iPhone 14/15/16) */
+@supports (padding: max(0px)) {
+  .header {
+    padding-top: max(0px, env(safe-area-inset-top));
+  }
+  
+  .footer {
+    padding-bottom: max(var(--space-8), env(safe-area-inset-bottom));
+  }
+}
