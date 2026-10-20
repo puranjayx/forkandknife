@@ -49,7 +49,8 @@ export function initBookingForm() {
     ];
 
     const encodedText = encodeURIComponent(textLines.join('\n'));
-    const whatsappUrl = `https://wa.me/919761414360?text=${encodedText}`;
+    const phoneTarget = import.meta.env.VITE_WHATSAPP_PHONE || '919761414360';
+    const whatsappUrl = `https://wa.me/${phoneTarget}?text=${encodedText}`;
 
     // Visual Feedback
     const originalText = submitBtn.innerHTML;

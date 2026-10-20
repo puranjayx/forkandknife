@@ -97,10 +97,6 @@
 </head>
 <body>
 
-  <!-- Custom Cursor for Desktop -->
-  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
-  <div class="custom-cursor-follower" id="cursorFollower" aria-hidden="true"></div>
-
   <!-- Branded Preloader -->
   <div class="preloader" id="preloader" aria-hidden="true">
     <div class="preloader-bg-pattern"></div>
@@ -192,36 +188,12 @@
       <img src="/images/leaf-orange.png" alt="Citrus" class="floating-ingredient hero-decor-5" style="top: 48%; right: 6%; width: 42px;" width="42" height="42" loading="eager">
 
       <div class="container hero-header">
-        <div class="rating-pill" style="margin-bottom: 1rem;">
-          <div class="rating-stars" aria-label="4.7 stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <span><strong>4.7</strong> / 5.0 (35 Google Reviews) • ₹1–200 per person</span>
-        </div>
         <h1 class="hero-main-title" id="heroMainTitle">PASTA WITH <em class="italic-accent">White Sauce</em></h1>
         <p class="hero-sub-title" id="heroSubTitle">Creamy Italian herbs &amp; garlic tossed pasta</p>
       </div>
 
-      <!-- Orbit Arc Stage -->
+      <!-- Hero Plate Display Stage -->
       <div class="hero-orbit-stage" id="heroOrbitStage">
-        <!-- SVG Orbit Curve Line -->
-        <svg class="hero-orbit-arc-svg" viewBox="0 0 860 380" fill="none">
-          <path class="orbit-arc-path" d="M 30,340 C 180,60 680,60 830,340" />
-        </svg>
-
-        <!-- Rotating Dish Labels along the arc -->
-        <div class="orbit-items-wrap" id="orbitItemsWrap">
-          <span class="orbit-dish-name is-active" data-dish="0" style="left: 12%; top: 48%;">White Sauce Pasta</span>
-          <span class="orbit-dish-name" data-dish="1" style="left: 28%; top: 20%;">Veg Steam Momo</span>
-          <span class="orbit-dish-name" data-dish="2" style="left: 50%; top: 12%; transform: translateX(-50%);">Chicken Lollipop</span>
-          <span class="orbit-dish-name" data-dish="3" style="right: 28%; top: 20%;">Special Jhol Momo</span>
-          <span class="orbit-dish-name" data-dish="0" style="right: 12%; top: 48%;">Cheese Sandwich</span>
-        </div>
-
         <!-- Central Hero Plate -->
         <div class="hero-plate-container">
           <img src="/images/hero-dish-1.png" alt="Fork & Knife Signature Handcrafted White Sauce Pasta" class="hero-plate-img" id="heroPlateImg" width="480" height="480" loading="eager">
@@ -237,22 +209,41 @@
       </div>
     </section>
 
-    <!-- Kinetic Marquee Strip -->
-    <div class="marquee-container" aria-hidden="true">
+    <!-- Kinetic Ultra-Cool Infinite Marquee Strip -->
+    <div class="marquee-container" aria-label="Signature Highlights Ticker">
       <div class="marquee-track">
-        <span class="marquee-item">VEG STEAM MOMO <span class="dot"></span></span>
-        <span class="marquee-item">CHICKEN LOLLIPOP <span class="dot"></span></span>
-        <span class="marquee-item">WHITE SAUCE PASTA <span class="dot"></span></span>
-        <span class="marquee-item">SPECIAL JHOL MOMO <span class="dot"></span></span>
-        <span class="marquee-item">CHEESE SANDWICH <span class="dot"></span></span>
-        <span class="marquee-item">LOTHE MOMOS <span class="dot"></span></span>
-        <span class="marquee-item">HOT TEA &amp; COLD COFFEE <span class="dot"></span></span>
-        <span class="marquee-item">VEG STEAM MOMO <span class="dot"></span></span>
-        <span class="marquee-item">CHICKEN LOLLIPOP <span class="dot"></span></span>
-        <span class="marquee-item">WHITE SAUCE PASTA <span class="dot"></span></span>
-        <span class="marquee-item">SPECIAL JHOL MOMO <span class="dot"></span></span>
-        <span class="marquee-item">CHEESE SANDWICH <span class="dot"></span></span>
-        <span class="marquee-item">LOTHE MOMOS <span class="dot"></span></span>
+        <div class="marquee-group">
+          <div class="marquee-item"><span class="badge-tag">🔥 MUST TRY</span><strong>KOTHE MOMOS</strong><span class="sub-label">Crispy Pan-Fried</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag badge-gold">⭐ SIGNATURE</span><strong>SPECIAL JHOL MOMO</strong><span class="sub-label">Sesame Broth</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag">🍝 CHEF'S SPECIAL</span><strong>WHITE SAUCE PASTA</strong><span class="sub-label">Creamy Italian</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag">🥟 FRESH STEAMED</span><strong>VEG STEAM MOMO</strong><span class="sub-label">Authentic Garhi Cantt</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag badge-gold">✨ POPULAR</span><strong>CRISPY CHICKEN LOLLIPOP</strong><span class="sub-label">Golden Crunch</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag">🥪 TOASTED</span><strong>CHEESE SANDWICH</strong><span class="sub-label">Melted Indulgence</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag">☕ BEVERAGES</span><strong>HOT CHAI &amp; COLD COFFEE</strong><span class="sub-label">Brewed Fresh</span></div>
+          <span class="marquee-separator">✦</span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <div class="marquee-item"><span class="badge-tag">🔥 MUST TRY</span><strong>KOTHE MOMOS</strong><span class="sub-label">Crispy Pan-Fried</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag badge-gold">⭐ SIGNATURE</span><strong>SPECIAL JHOL MOMO</strong><span class="sub-label">Sesame Broth</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag">🍝 CHEF'S SPECIAL</span><strong>WHITE SAUCE PASTA</strong><span class="sub-label">Creamy Italian</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag">🥟 FRESH STEAMED</span><strong>VEG STEAM MOMO</strong><span class="sub-label">Authentic Garhi Cantt</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag badge-gold">✨ POPULAR</span><strong>CRISPY CHICKEN LOLLIPOP</strong><span class="sub-label">Golden Crunch</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag">🥪 TOASTED</span><strong>CHEESE SANDWICH</strong><span class="sub-label">Melted Indulgence</span></div>
+          <span class="marquee-separator">✦</span>
+          <div class="marquee-item"><span class="badge-tag">☕ BEVERAGES</span><strong>HOT CHAI &amp; COLD COFFEE</strong><span class="sub-label">Brewed Fresh</span></div>
+          <span class="marquee-separator">✦</span>
+        </div>
       </div>
     </div>
 
@@ -276,7 +267,7 @@
               </div>
               <div class="category-info">
                 <h3>STARTERS &amp; MOMOS</h3>
-                <p>Veg Steam, Jhol Momo, Lothe Momos &amp; Crispy Chicken Lollipop</p>
+                <p>Veg Steam, Jhol Momo, Kothe Momos &amp; Crispy Chicken Lollipop</p>
               </div>
             </div>
 
@@ -589,7 +580,7 @@
           <div class="flavor-categories-col">
             <div class="flavor-cat-item">
               <h4>STARTERS &amp; SNACKS</h4>
-              <p>Veg Steam Momos, Jhol Momos, Lothe Momos, Chicken Lollipop &amp; Golden Crispy French Fries.</p>
+              <p>Veg Steam Momos, Jhol Momos, Kothe Momos, Chicken Lollipop &amp; Golden Crispy French Fries.</p>
             </div>
 
             <div class="flavor-cat-item">

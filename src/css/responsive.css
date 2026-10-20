@@ -12,38 +12,39 @@
   }
 
   .hero-main-title {
-    font-size: clamp(1.85rem, 7vw, 2.75rem);
-    letter-spacing: 0.08em;
+    font-size: clamp(2rem, 7.5vw, 2.85rem);
+    letter-spacing: 0.02em;
+    font-style: italic;
+    margin-bottom: var(--space-2);
+  }
+
+  .hero-sub-title {
+    font-size: 0.725rem;
+    margin-bottom: var(--space-4);
   }
 
   .hero-orbit-stage {
     height: auto;
-    min-height: 320px;
-    margin-top: var(--space-6);
-  }
-
-  .hero-orbit-arc-svg {
-    display: none; /* Hide complex arc on small mobile */
-  }
-
-  .orbit-items-wrap {
-    display: none; /* Mobile switches to swipeable plate + pagination */
+    min-height: auto;
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
   }
 
   .hero-plate-container {
-    width: clamp(220px, 64vw, 300px);
-    height: clamp(220px, 64vw, 300px);
-    margin-bottom: var(--space-4);
+    width: clamp(230px, 68vw, 300px);
+    height: clamp(230px, 68vw, 300px);
+    margin-bottom: var(--space-2);
   }
 
   .hero-pagination {
     margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
   }
 
   .pagination-pill {
-    width: 48px;
-    height: 38px;
-    font-size: var(--text-sm);
+    width: 44px;
+    height: 34px;
+    font-size: var(--text-xs);
   }
 }
 

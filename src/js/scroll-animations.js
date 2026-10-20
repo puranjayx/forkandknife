@@ -11,10 +11,11 @@ export function initScrollAnimations() {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced) return;
 
-  // 1. Sticky Navbar Hide/Show
+  // 1. Sticky Navbar Always Visible (with scrolled backdrop blur)
   const header = document.getElementById('header');
   if (header) {
-    let lastScrollY = window.scrollY;
+    // Ensure is-hidden is never applied
+    header.classList.remove('is-hidden');
 
     ScrollTrigger.create({
       start: 'top top',
@@ -22,21 +23,12 @@ export function initScrollAnimations() {
       onUpdate: (self) => {
         const currentScrollY = self.scroll();
 
-        // Background blur toggle
-        if (currentScrollY > 60) {
+        // Background blur & elevation toggle
+        if (currentScrollY > 40) {
           header.classList.add('is-scrolled');
         } else {
           header.classList.remove('is-scrolled');
         }
-
-        // Hide on scroll down, show on scroll up
-        if (currentScrollY > 150 && currentScrollY > lastScrollY && !header.classList.contains('is-hidden')) {
-          header.classList.add('is-hidden');
-        } else if (currentScrollY < lastScrollY && header.classList.contains('is-hidden')) {
-          header.classList.remove('is-hidden');
-        }
-
-        lastScrollY = currentScrollY;
       }
     });
   }

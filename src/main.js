@@ -7,7 +7,6 @@ import { initHeroOrbit } from './js/hero-orbit.js';
 import { initScrollAnimations } from './js/scroll-animations.js';
 import { initReviewsCarousel } from './js/carousel.js';
 import { initBookingForm } from './js/booking-form.js';
-import { initCustomCursor } from './js/cursor.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Update footer year dynamically
@@ -45,6 +44,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initReviewsCarousel();
     initBookingForm();
-    initCustomCursor();
   });
 });

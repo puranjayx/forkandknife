@@ -18,7 +18,7 @@ A production-quality, animation-rich, responsive single-page website for **Fork 
   - White Sauce Pasta
   - Jhol Momo
   - Cheese Sandwich
-  - "Lothe" Momos
+  - "Kothe" Momos (Kothey Pan-Fried Momos)
 - **Customer Reviews**:
   1. *Deepika K Thapa*: "Love this place... They do take some time but the quality and taste are great."
   2. *Bhumika Rawat*: "Amazing food, freshly made. Do visit."
